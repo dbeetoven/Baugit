@@ -1,0 +1,41 @@
+.page {
+  height: 100vh;
+}
+.sidebar {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border: 2px solid #eeeeee;
+  background: #f8f8f8;
+}
+.main {
+  padding-top: 0.5rem;
+  height: 100vh;
+  border-radius: 15px;
+  border: 2px solid #f8f8f8;
+}
+.sidebar-subitem-text {
+  font-size: 0.8rem;
+}
+
+.seachCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  align-content: center;
+}
+
+.border-raduis {
+  border-radius: 15px;
+  border: 2px solid #f8f8f8;
+}
+
+.listView {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
