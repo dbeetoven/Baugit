@@ -35,13 +35,19 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "liny-staged",
+      "pre-commit": "lint-staged",
       "pre-push": "yarm build"
     }
   },
   "lint-staged": {
-    "*.+(js|jsx)": ["eslint --fix", "git add"],
-    "*.+(json|css|md)": ["prettier --write", "git add"]
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
