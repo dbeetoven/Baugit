@@ -26,11 +26,22 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .jsx,.js src",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
     "pre-commit": "npm run lint",
     "pre-push": "yarn build --prod",
     "post-merge": "npm install",
     "post-rewrite": "npm install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "liny-staged",
+      "pre-push": "yarm build"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": ["eslint --fix", "git add"],
+    "*.+(json|css|md)": ["prettier --write", "git add"]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -53,6 +64,7 @@
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "husky": "^4.2.3",
