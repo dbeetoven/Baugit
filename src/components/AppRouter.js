@@ -1,29 +1,23 @@
-import Navbar from 'components/NavBar';
+import React from 'react';
 import ROUTES from 'constants/routes';
 import HomePage from 'pages/HomePage';
 import LoginPage from 'pages/loginPage/LoginPage';
+import {Layout} from 'components/Layout'
 import SignUpPage from 'pages/signupPage/SignUpPage';
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ForgotPasswordPage from 'pages/forgotPasswordPage/ForgotPasswordPage'
+import { Route, Switch } from 'react-router-dom';
 
 const AppRouter = () => {
   return (
-    <div style={style}>
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route path={ROUTES.LOGIN} component={LoginPage} />
-          <Route path={ROUTES.SIGNUP} component={SignUpPage} />
-          <Route path={ROUTES.HOME} exact component={HomePage} />
-        </Switch>
-      </Router>
-    </div>
+      <Switch>
+        <Route path={ROUTES.LOGIN} component={LoginPage} />
+        <Route path={ROUTES.SIGNUP} component={SignUpPage} />
+        <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPasswordPage} />
+        <Layout>
+        <Route exact path={ROUTES.HOME}  component={HomePage} />
+        </Layout>
+      </Switch>
   );
-};
-
-const style = {
-  width: '100%',
-  // height: '100%',
 };
 
 export default AppRouter;

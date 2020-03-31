@@ -1,108 +1,91 @@
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import CardHeader from '@material-ui/core/CardHeader';
+import 'firebase/auth';
+import React, { useState } from 'react';
+import { useFirebaseApp } from 'reactfire';
 
-import React from 'react';
-import './LoginPage.scss';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-  media: {
-    height: 280,
-  },
-}));
+const LoginPage = () => {
+  const firebase = useFirebaseApp();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-export default function LoginPage() {
-  const classes = useStyles();
-  const [setValue] = React.useState('Controlled');
-  const subtitle = 'Lleva tu carrera a un nuevo nivel';
-  const handleChange = event => {
-    setValue(event.target.value);
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    if (email.includes('@') && password !== '')
+      await firebase.auth().signInWithEmailAndPassword(email, password);
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <div className="loginPage">
-        <Card className="card">
-          <CardHeader
-            title={<h2>Baugit</h2>}
-            style={{ textAlign: 'center' }}
-            subheader={subtitle}
-          ></CardHeader>
-          <CardContent className="cardContent">
-            <div className="row">
-              <div className="col-12">
-                <div className="row">
-                  <div className="col-sm-12 col-md-6">
-                    <TextField
-                      id="standard-multiline-flexible"
-                      label="Email"
-                      type="email"
-                      placeholder="Email"
-                      multiline
-                      rowsMax="4"
-                      required
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="col-sm-12 col-md-6">
-                    <TextField
-                      id="standard-textarea"
-                      label="Contraseña"
-                      type="password"
-                      placeholder="Password"
-                      multiline
-                      required
-                    />
+    <div>
+      <div className="row justify-content-center">
+        <div className="col-xl-10 col-lg-12 col-md-9">
+          <div className="card o-hidden border-0 shadow-lg my-5">
+            <div className="card-body p-0">
+              <div className="row">
+                <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                <div className="col-lg-6">
+                  <div className="p-5">
+                    <div className="text-center">
+                      <h1 className="h4 text-gray-900 mb-4">Bienvenido!</h1>
+                    </div>
+                    <form className="user" onSubmit={handleSubmit} noValidate>
+                      <div className="form-group">
+                        <input
+                          type="email"
+                          className="form-control form-control-user"
+                          id="exampleInputEmail"
+                          aria-describedby="emailHelp"
+                          placeholder="Correo Electronico"
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="password"
+                          className="form-control form-control-user"
+                          id="exampleInputPassword"
+                          placeholder="Password"
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <div className="custom-control custom-checkbox small">
+                          <input
+                            type="checkbox"
+                            className="custom-control-input"
+                            id="customCheck"
+                          />
+                        </div>
+                      </div>
+                      <a href="index.html" className="btn btn-primary btn-user btn-block">
+                        Iniciar Sesion
+                      </a>
+                      <hr />
+                      <a href="index.html" className="btn btn-google btn-user btn-block">
+                        <i className="fab fa-google fa-fw"></i> Iniciar con Google
+                      </a>
+                      <a href="index.html" className="btn btn-facebook btn-user btn-block">
+                        <i className="fab fa-facebook-f fa-fw"></i> Iniciar con Facebook
+                      </a>
+                    </form>
+                    <hr />
+                    <div className="text-center">
+                      <a className="small" href="forgot-password.html">
+                        Olvido Password?
+                      </a>
+                    </div>
+                    <div className="text-center">
+                      <a className="small" href="register.html">
+                        Crear Cuenta!
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <div className="col-sm-12 text-center pt-2">
-                  <Button variant="contained" color="primary" disableElevation>
-                    Iniciar Sesion
-                  </Button>
-                </div>
-              </div>
-              <hr />
-              <div className="col-12 pt-2">
-                <div className="row">
-                  <div className="col-sm-12 col-md-6 text-left">
-                    <Button href="#text-buttons" color="primary">
-                      <span color="primary"> Crear Cuenta</span>
-                    </Button>
-                  </div>
-                  <div className="col-12 col-md-6 text-right">
-                    <Button href="#text-buttons" color="primary">
-                      Has olvidado tu contraseña?
-                    </Button>
-                  </div>
-                </div>
-              </div>
-              <hr />
-              <div className="col-12 pt-2">
-                <h4>Or</h4>
               </div>
             </div>
-          </CardContent>
-
-          <CardActions className="cardAction">
-            <Button variant="contained" color="secondary" disableElevation>
-              Google
-            </Button>
-            <Button variant="contained" color="primary" disableElevation>
-              Facebook
-            </Button>
-          </CardActions>
-        </Card>
+          </div>
+        </div>
       </div>
-    </form>
+    </div>
   );
-}
+};
+export default LoginPage;

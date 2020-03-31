@@ -1,52 +1,58 @@
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Icon from '@material-ui/core/Icon';
-import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
+import { useUser } from 'reactfire';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    marginLeft: -12,
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
-
-const Navbar = props => {
-  const classes = useStyles();
-
+const Navbar = (props) => {
+  const user = useUser();
+  console.log({user});
+  
   return (
-    <div className={classes.root}>
-      <AppBar position="static" elevation={0}>
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Baugit
-          </Typography>
-          <Button color="inherit" onClick={event => (window.location.href = '/empresa')}>
-            Empresa
-          </Button>
-          <Button color="inherit" onClick={event => (window.location.href = '/contacto')}>
-            Contacto
-          </Button>
-          <Button color="inherit" onClick={event => (window.location.href = '/login')}>
-            Login <Icon>power_settings_new</Icon>
-          </Button>
-          {/* </div> */}
-        </Toolbar>
-      </AppBar>
-    </div>
+    <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+      <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
+        <i className="fa fa-bars"></i>
+      </button>
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item dropdown no-arrow">
+          <a
+            className="nav-link dropdown-toggle"
+            href="#"
+            id="userDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{user.email}</span>
+            <img
+              className="img-profile rounded-circle"
+              src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
+            />
+          </a>
+
+          <div
+            className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="userDropdown"
+          >
+            <a className="dropdown-item" href="#">
+              <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Perfil
+            </a>
+            <a className="dropdown-item" href="#">
+              <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+              Parametros
+            </a>
+            <a className="dropdown-item" href="#">
+              <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+               Actividades
+            </a>
+            <div className="dropdown-divider"></div>
+            <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+              <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              Cerrar Sesion
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
