@@ -2,7 +2,7 @@ const Routes = {
   HOME: '/',
   LOGIN: '/login',
   SIGNUP: '/register',
-  PROFILE: '/profile',
+  PROFILE: '/user-profile',
   ENTERPRISE: '/empresa',
   CONTACT: '/contacto',
   FORGOT_PASSWORD:'/olvido-password',

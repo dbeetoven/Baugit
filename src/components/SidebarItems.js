@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 const SidebarItems = (props) => {
-  const { title, subtitle,control, childrens } = props;
+  const { title, subtitle, control, childrens } = props;
 
   return (
     <li className="nav-item">
-      <a
+      <Link
         className="nav-link collapsed"
         href="#"
         data-toggle="collapse"
@@ -15,7 +16,7 @@ const SidebarItems = (props) => {
       >
         <i className="fas fa-fw fa-wrench"></i>
         <span>{title}</span>
-      </a>
+      </Link>
       <div
         id={control}
         className="collapse"

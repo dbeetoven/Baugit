@@ -1,16 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Sidebar = (props) => {
   return (
     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-      <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="/">
         <div className="sidebar-brand-icon rotate-n-15">
           <i className="fas fa-laugh-wink"></i>
         </div>
         <div className="sidebar-brand-text mx-3">
           BaugIT <sup>*</sup>
         </div>
-      </a>
+      </Link>
 
       <hr className="sidebar-divider my-0" />
 
@@ -26,7 +27,7 @@ const Sidebar = (props) => {
       <div className="sidebar-heading">Interface</div>
 
       <li className="nav-item">
-        <a
+        <Link
           className="nav-link collapsed"
           href="#"
           data-toggle="collapse"
@@ -36,7 +37,7 @@ const Sidebar = (props) => {
         >
           <i className="fas fa-fw fa-cog"></i>
           <span>Components</span>
-        </a>
+        </Link>
         <div
           id="collapseTwo"
           className="collapse"
@@ -56,7 +57,7 @@ const Sidebar = (props) => {
       </li>
 
       <li className="nav-item">
-        <a
+        <Link
           className="nav-link collapsed"
           href="#"
           data-toggle="collapse"
@@ -66,7 +67,7 @@ const Sidebar = (props) => {
         >
           <i className="fas fa-fw fa-wrench"></i>
           <span>Utilities</span>
-        </a>
+        </Link>
         <div
           id="collapseUtilities"
           className="collapse"
