@@ -2,16 +2,26 @@ import 'firebase/auth';
 import React, { useState } from 'react';
 import { useFirebaseApp } from 'reactfire';
 
-
 const LoginPage = () => {
   const firebase = useFirebaseApp();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const isEnabled = email.length > 0 && email.includes('@') && password.length >= 6;
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    if (email.includes('@') && password !== '')
-      await firebase.auth().signInWithEmailAndPassword(email, password);
+    const userLoggedIn = await firebase.auth().signInWithEmailAndPassword(email, password);
+    console.log({ userLoggedIn });
+  };
+
+  const loginWithGoogle = async (ev) => {
+    ev.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+
+    const userLoggedIn = await firebase.auth().signInWithPopup(provider);
+    console.log({ userLoggedIn });
   };
 
   return (
@@ -56,16 +66,24 @@ const LoginPage = () => {
                           />
                         </div>
                       </div>
-                      <a href="index.html" className="btn btn-primary btn-user btn-block">
+                      <button
+                        type="submit"
+                        disabled={!isEnabled}
+                        className="btn btn-primary btn-user btn-block"
+                      >
                         Iniciar Sesion
-                      </a>
+                      </button>
                       <hr />
-                      <a href="index.html" className="btn btn-google btn-user btn-block">
+                      <button
+                        type="button"
+                        onClick={loginWithGoogle}
+                        className="btn btn-google btn-user btn-block"
+                      >
                         <i className="fab fa-google fa-fw"></i> Iniciar con Google
-                      </a>
-                      <a href="index.html" className="btn btn-facebook btn-user btn-block">
+                      </button>
+                      <button type="button" className="btn btn-facebook btn-user btn-block">
                         <i className="fab fa-facebook-f fa-fw"></i> Iniciar con Facebook
-                      </a>
+                      </button>
                     </form>
                     <hr />
                     <div className="text-center">

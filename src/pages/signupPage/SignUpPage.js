@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
 export default class SignUp extends Component {
+  // const handleForm = e => {
+  //   e.preventDefault();
+  //   firebase
+  //     .auth()
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then(res => {
+  //       if (res.user) Auth.setLoggedIn(true);
+  //     })
+  //     .catch(e => {
+  //       setErrors(e.message);
+  //     });
+  // };
   render() {
     return (
       <div className="bg-gradient-primary">

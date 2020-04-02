@@ -23,6 +23,22 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-console": "warn",
     "no-eval": "error",
-    "import/first": "error"
+    "import/first": "error",
+    "arrow-parens": "off",
+    "import/no-cycle": "off",
+    "linebreak-style": ["error", "windows"],
+    "no-useless-catch": "off",
+    "comma-dangle": "off",
+    "no-param-reassign": "off",
+    "operator-linebreak": ["error", "after"],
+    "jsx-quotes": "off",
+    "react/prop-types": "warn",
+    "no-shadow": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/state-in-constructor": "off",
+    "import/prefer-default-export": "warn",
+    "no-unused-vars": "warn"
   }
 }
