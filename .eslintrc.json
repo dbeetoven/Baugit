@@ -3,7 +3,10 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -15,22 +18,37 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks"],
+  "plugins": [
+    "react",
+    "react-hooks"
+  ],
   "rules": {
-    "additional-rule": "warn",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
     "no-console": "warn",
     "no-eval": "error",
     "import/first": "error",
     "arrow-parens": "off",
     "import/no-cycle": "off",
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
     "no-useless-catch": "off",
     "comma-dangle": "off",
     "no-param-reassign": "off",
-    "operator-linebreak": ["error", "after"],
+    "operator-linebreak": [
+      "error",
+      "after"
+    ],
     "jsx-quotes": "off",
     "react/prop-types": "warn",
     "no-shadow": "off",
@@ -38,7 +56,29 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/state-in-constructor": "off",
-    "import/prefer-default-export": "warn",
-    "no-unused-vars": "warn"
+    "import/prefer-default-export": "off",
+    "no-unused-vars": "warn",
+    "react/button-has-type": [
+      "error",
+      {
+        "reset": false
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": [ "error", { "components": [ "Link" ], "specialLink": [ "onClick", "to" ] } ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ],
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
   }
 }

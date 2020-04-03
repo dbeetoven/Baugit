@@ -1,14 +1,17 @@
 import React from 'react';
 import { useUser } from 'reactfire';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-const Navbar = (props) => {
+const Navbar = () => {
   const user = useUser();
-  console.log({ user });
 
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-      <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
+      <button
+        type="button"
+        id="sidebarToggleTop"
+        className="btn btn-link d-md-none rounded-circle mr-3"
+      >
         <i className="fa fa-bars" />
       </button>
       <ul className="navbar-nav ml-auto">
@@ -24,6 +27,7 @@ const Navbar = (props) => {
           >
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">{user.email}</span>
             <img
+              alt="Avatar-profile"
               className="img-profile rounded-circle"
               src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
             />

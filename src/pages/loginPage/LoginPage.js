@@ -31,7 +31,7 @@ const LoginPage = () => {
           <div className="card o-hidden border-0 shadow-lg my-5">
             <div className="card-body p-0">
               <div className="row">
-                <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                <div className="col-lg-6 d-none d-lg-block bg-login-image" />
                 <div className="col-lg-6">
                   <div className="p-5">
                     <div className="text-center">
@@ -53,7 +53,7 @@ const LoginPage = () => {
                           type="password"
                           className="form-control form-control-user"
                           id="exampleInputPassword"
-                          placeholder="Password"
+                          placeholder="Contraseña"
                           onChange={(e) => setPassword(e.target.value)}
                         />
                       </div>
@@ -79,21 +79,21 @@ const LoginPage = () => {
                         onClick={loginWithGoogle}
                         className="btn btn-google btn-user btn-block"
                       >
-                        <i className="fab fa-google fa-fw"></i> Iniciar con Google
+                        <i className="fab fa-google fa-fw" /> Iniciar con Google
                       </button>
                       <button type="button" className="btn btn-facebook btn-user btn-block">
-                        <i className="fab fa-facebook-f fa-fw"></i> Iniciar con Facebook
+                        <i className="fab fa-facebook-f fa-fw" /> Iniciar con Facebook
                       </button>
                     </form>
                     <hr />
                     <div className="text-center">
                       <a className="small" href="forgot-password.html">
-                        Olvido Password?
+                        ¿Olvidaste tu contraseña?
                       </a>
                     </div>
                     <div className="text-center">
                       <a className="small" href="register.html">
-                        Crear Cuenta!
+                        ¿No tienes un cuenta? Registrate gratis
                       </a>
                     </div>
                   </div>

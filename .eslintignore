@@ -1,2 +1,9 @@
 .env
-packaje.json
+.travis.yml
+.prettierrc
+.idea
+package.json
+README.md
+.editorconfig
+yarn.lock
+

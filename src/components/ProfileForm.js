@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export const ProfileForm = (props) => {
-  const user = props.user;
+  const { user } = props;
   const [username, setUsername] = useState(user.email.substring(0, user.email.indexOf('@')));
   const [company, setCompany] = useState('');
   const [name, setName] = useState('');
@@ -39,7 +39,7 @@ export const ProfileForm = (props) => {
             className="form-control form-control-user"
             id="inputUsername"
             value={username}
-            readOnly={true}
+            readOnly
             onChange={(e) => setUsername(e.target.value)}
             maxLength="15"
             placeholder="Usuario"
@@ -51,7 +51,7 @@ export const ProfileForm = (props) => {
             className="form-control form-control-user"
             id="inputCorreo"
             value={user.email}
-            readOnly={true}
+            readOnly
             placeholder="Correo"
           />
         </div>
@@ -139,14 +139,14 @@ export const ProfileForm = (props) => {
         </div>
         <div className="form-group col-12">
           <textarea
-            class="form-control"
+            className="form-control"
             id="inputTextBiography"
             placeholder="Biografia"
             rows="5"
             value={biography}
             onChange={(e) => setBiography(e.target.value)}
             maxLength="500"
-          ></textarea>
+          />
         </div>
         <div className="form-group col-md-6 offset-md-3">
           <button className="btn btn-primary btn-user btn-block">Editar</button>

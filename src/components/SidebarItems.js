@@ -14,7 +14,7 @@ const SidebarItems = (props) => {
         aria-expanded="true"
         aria-controls={control}
       >
-        <i className="fas fa-fw fa-wrench"></i>
+        <i className="fas fa-fw fa-wrench" />
         <span>{title}</span>
       </Link>
       <div

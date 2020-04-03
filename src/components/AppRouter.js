@@ -7,6 +7,7 @@ import SignUpPage from 'pages/signupPage/SignUpPage';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Profile } from 'pages/profile/Profile';
+import { Dashboard } from 'pages/dashboard/Dashboard';
 
 const AppRouter = () => (
   <Switch>
@@ -16,6 +17,7 @@ const AppRouter = () => (
     <Layout>
       <Route exact path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.PROFILE} component={Profile} />
+      <Route path={ROUTES.JOBS_HIRING} component={Dashboard} />
     </Layout>
   </Switch>
 );

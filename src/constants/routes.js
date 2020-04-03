@@ -5,10 +5,10 @@ const Routes = {
   PROFILE: '/user-profile',
   ENTERPRISE: '/empresa',
   CONTACT: '/contacto',
-  FORGOT_PASSWORD:'/olvido-password',
-  JOBS_HIRING:'/busqueda-laboral',
-  CHALLENGE:'/challenge',
-  INTERVIEW:'/entrevista'
+  FORGOT_PASSWORD: '/olvido-password',
+  JOBS_HIRING: '/busquedas',
+  CHALLENGE: '/challenge',
+  INTERVIEW: '/entrevista',
 };
 
 export default Routes;

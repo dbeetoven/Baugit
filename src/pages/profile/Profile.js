@@ -1,23 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { ProfileCard } from 'components/ProfileCard';
 import { ProfileForm } from 'components/ProfileForm';
 import Collections from 'constants/fireContant';
 import 'firebase/firestore';
-import { useUser, useFirebaseApp } from 'reactfire';
+import { useFirebaseApp, useUser } from 'reactfire';
 
-export const Profile = (props) => {
+export const Profile = () => {
   const user = useUser();
-  const [userProfile,setUserProfile]=useState({})
+  const [userProfile, setUserProfile] = useState({});
   const firestore = useFirebaseApp();
 
-  // useEffect(()=>{
-  //   firestore
-  //   .firestore()
-  //   .collection(Collections.USERS)
-  //   .doc(user.uid).onSnapshot((data)=>{
-  //     setUserProfile(data.data());
-  //   });
-  // },[]);
+  useEffect(() => {
+    firestore
+      .firestore()
+      .collection(Collections.USERS)
+      .doc(user.uid)
+      .onSnapshot((data) => {
+        setUserProfile(data.data());
+        console.log(data.data());
+      });
+  }, []);
 
   const editPerfil = (userData) => {
     firestore
