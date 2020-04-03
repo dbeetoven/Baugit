@@ -2,7 +2,8 @@ name: Deploy to github pages
   on:
     push:
       branches:
-        - master
+        - '*'
+        - '!master'
   jobs:
     gh-pages-deploy:
       name: Deploying to gh-pages
