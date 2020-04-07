@@ -1,6 +1,8 @@
 import 'firebase/auth';
 import React, { useState } from 'react';
 import { useFirebaseApp } from 'reactfire';
+import httpService from 'api/axios-client';
+import api from 'api/api'
 
 const LoginPage = () => {
   const firebase = useFirebaseApp();
@@ -23,6 +25,15 @@ const LoginPage = () => {
     const userLoggedIn = await firebase.auth().signInWithPopup(provider);
     console.log({ userLoggedIn });
   };
+
+  const googleTest=(ev)=>{
+    ev.preventDefault();
+    httpService.get(api.LOGIN_WITH_GOOGLE).then((res)=>{
+      console.log(res);
+      
+    }
+    )
+  }
 
   return (
     <div>
@@ -81,7 +92,7 @@ const LoginPage = () => {
                       >
                         <i className="fab fa-google fa-fw" /> Iniciar con Google
                       </button>
-                      <button type="button" className="btn btn-facebook btn-user btn-block">
+                      <button type="button" onClick={googleTest} className="btn btn-facebook btn-user btn-block">
                         <i className="fab fa-facebook-f fa-fw" /> Iniciar con Facebook
                       </button>
                     </form>
