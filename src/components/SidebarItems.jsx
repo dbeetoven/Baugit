@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SidebarItems = (props) => {
-  const { title, subtitle, control, childrens } = props;
+  const {
+    title, subtitle, control, childrens
+  } = props;
 
   return (
     <li className="nav-item">
