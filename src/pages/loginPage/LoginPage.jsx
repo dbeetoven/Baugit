@@ -1,10 +1,12 @@
 import 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useFirebaseApp } from 'reactfire';
 import httpService from 'api/axios-client';
-import api from 'api/api'
+import api from 'api/api';
+import { authContext } from 'api/context/api-context';
 
 const LoginPage = () => {
+  const [setAuthValue] = useContext(authContext);
   const firebase = useFirebaseApp();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,8 +14,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    const userLoggedIn = await firebase.auth().signInWithEmailAndPassword(email, password);
-    console.log({ userLoggedIn });
+    // const userLoggedIn = await firebase.auth().signInWithEmailAndPassword(email, password);
   };
 
   const loginWithGoogle = async (ev) => {
@@ -22,18 +23,16 @@ const LoginPage = () => {
     provider.addScope('profile');
     provider.addScope('email');
 
-    const userLoggedIn = await firebase.auth().signInWithPopup(provider);
-    console.log({ userLoggedIn });
+    // const userLoggedIn = await firebase.auth().signInWithPopup(provider);
   };
 
-  const googleTest=(ev)=>{
+  const googleTest = (ev) => {
     ev.preventDefault();
-    httpService.get(api.LOGIN_WITH_GOOGLE).then((res)=>{
-      console.log(res);
-      
-    }
-    )
-  }
+    httpService.post(api.LOGIN, { email, password }).then((res) => {
+      const [token, user] = res;
+      setAuthValue({ user, token, logged: true });
+    });
+  };
 
   return (
     <div>
@@ -92,7 +91,11 @@ const LoginPage = () => {
                       >
                         <i className="fab fa-google fa-fw" /> Iniciar con Google
                       </button>
-                      <button type="button" onClick={googleTest} className="btn btn-facebook btn-user btn-block">
+                      <button
+                        type="button"
+                        onClick={googleTest}
+                        className="btn btn-facebook btn-user btn-block"
+                      >
                         <i className="fab fa-facebook-f fa-fw" /> Iniciar con Facebook
                       </button>
                     </form>

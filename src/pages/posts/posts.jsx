@@ -10,7 +10,6 @@ export const Posts = () => {
     { label: 'Amazon', value: 5 },
     { label: 'Alphabet', value: 6 },
   ];
-  const jobTypes=[]
 
   return (
     <div className="row">
