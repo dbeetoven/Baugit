@@ -9,16 +9,16 @@ import { Route, Switch } from 'react-router-dom';
 import { Profile } from 'pages/profile/Profile';
 import { Dashboard } from 'pages/dashboard/Dashboard';
 import { Posts } from 'pages/posts/posts';
-import { UserContext } from 'api/provider/UserProvider';
+import { AuthContext } from 'api/provider/AuthProvider';
 
 const AppRouter = () => {
-  const useUser = React.useContext(UserContext);
+  const [user, logout] = React.useContext(AuthContext);
   return (
     <Switch>
       <Route path={ROUTES.LOGIN} component={LoginPage} />
       <Route path={ROUTES.SIGNUP} component={SignUpPage} />
       <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPasswordPage} />
-      <Layout>
+      <Layout user={user} logout={logout}>
         <Route path={ROUTES.PROFILE} component={Profile} />
         <Route path={ROUTES.JOBS_HIRING} component={Dashboard} />
         <Route path={ROUTES.JOBS_POSTS} component={Posts} />
