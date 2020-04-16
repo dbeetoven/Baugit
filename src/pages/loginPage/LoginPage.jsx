@@ -1,26 +1,29 @@
-import 'firebase/auth';
-import React, { useState, useContext } from 'react';
-import { useFirebaseApp } from 'reactfire';
-import httpService from 'api/axios-client';
-import api from 'api/api';
-import { AuthProvider } from 'api/provider/AuthProvider';
+import { AuthContext } from 'api/provider/AuthProvider';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [user, login] = useContext(AuthProvider);
-  console.log({ user });
-
+  const authContext = useContext(AuthContext);
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isEnabled = email.length > 0 && email.includes('@') && password.length >= 6;
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    login({ email, password });
+    authContext
+      .login({ email, password })
+      .then((res) => {
+        authContext.setSessionData(res.token, res.user);
+        history.push('/');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
     <div>
-      x
       <div className="row justify-content-center">
         <div className="col-xl-10 col-lg-12 col-md-9">
           <div className="card o-hidden border-0 shadow-lg my-5">

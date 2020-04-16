@@ -1,13 +1,9 @@
 import axios from 'axios';
+import localStorageService from './localstorage';
+import api from './api';
 
 const urlBase = 'http://baugitapi.herokuapp.com/api/v1';
-// const urlBase = 'http://localhost:8626/api/v1';
-/**
- * @param {string}  url url a la cual consultar
- * esta funcion detecta si es una nueva url base (comienza con http:// o https://).
- * en caso de ser asi, retorna la url. en caso contrario, se asume que es un fragmento
- * de path por lo que se concatena con la constante urlBase
- * */
+
 const readUrl = (url = '') => (url.startsWith('http://') || url.startsWith('https://') ? url : `${urlBase}/${url}`);
 
 const get = (url = '', headers = {}) => axios.get(readUrl(url), {
@@ -42,6 +38,18 @@ const del = (url = '', headers = {}) => axios.delete(readUrl(url), {
   },
 });
 
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorageService.getItem(api.TOKEN_KEY);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    Promise.reject(error);
+  },
+);
 export default {
   get,
   post,

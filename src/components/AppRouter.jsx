@@ -12,13 +12,14 @@ import { Posts } from 'pages/posts/posts';
 import { AuthContext } from 'api/provider/AuthProvider';
 
 const AppRouter = () => {
-  const [user, logout] = React.useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+
   return (
     <Switch>
       <Route path={ROUTES.LOGIN} component={LoginPage} />
       <Route path={ROUTES.SIGNUP} component={SignUpPage} />
       <Route path={ROUTES.FORGOT_PASSWORD} component={ForgotPasswordPage} />
-      <Layout user={user} logout={logout}>
+      <Layout user={authContext.user} logout={useContext.logout}>
         <Route path={ROUTES.PROFILE} component={Profile} />
         <Route path={ROUTES.JOBS_HIRING} component={Dashboard} />
         <Route path={ROUTES.JOBS_POSTS} component={Posts} />

@@ -2,7 +2,7 @@ import React from 'react';
 import { useUser } from 'reactfire';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => (
+const Navbar = ({ user, logout }) => (
   <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
     <button
       type="button"

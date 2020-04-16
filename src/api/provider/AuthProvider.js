@@ -3,8 +3,8 @@ import httpService from 'api/axios-client';
 import localstorage from '../localstorage';
 import api from '../api';
 
-const token = localstorage.getItem(api.token);
-const user = localstorage.getItem(api.USER);
+const token = localstorage.getItem(api.token) || '';
+const user = localstorage.getItem(api.USER) || {};
 
 const setSessionData = (...args) => {
   const [token, user] = args;
@@ -21,8 +21,13 @@ const logout = () => {
 
 const register = ({ username, email, password }) => httpService.post(api.SIGNUP, { username, email, password });
 
-const AuthContext = React.createContext({
-  user, token, login, logout, register
-});
-
-export { AuthContext };
+const AuthContext = React.createContext();
+const defaultValue = {
+  user,
+  token,
+  login,
+  logout,
+  register,
+  setSessionData,
+};
+export { AuthContext, defaultValue };
