@@ -3,39 +3,24 @@ import React, { useState, useContext } from 'react';
 import { useFirebaseApp } from 'reactfire';
 import httpService from 'api/axios-client';
 import api from 'api/api';
-import { authContext } from 'api/context/api-context';
+import { AuthProvider } from 'api/provider/AuthProvider';
 
 const LoginPage = () => {
-  const [setAuthValue] = useContext(authContext);
-  const firebase = useFirebaseApp();
+  const [user, login] = useContext(AuthProvider);
+  console.log({ user });
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isEnabled = email.length > 0 && email.includes('@') && password.length >= 6;
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    // const userLoggedIn = await firebase.auth().signInWithEmailAndPassword(email, password);
-  };
-
-  const loginWithGoogle = async (ev) => {
-    ev.preventDefault();
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
-
-    // const userLoggedIn = await firebase.auth().signInWithPopup(provider);
-  };
-
-  const googleTest = (ev) => {
-    ev.preventDefault();
-    httpService.post(api.LOGIN, { email, password }).then((res) => {
-      const [token, user] = res;
-      setAuthValue({ user, token, logged: true });
-    });
+    login({ email, password });
   };
 
   return (
     <div>
+      x
       <div className="row justify-content-center">
         <div className="col-xl-10 col-lg-12 col-md-9">
           <div className="card o-hidden border-0 shadow-lg my-5">
@@ -84,20 +69,6 @@ const LoginPage = () => {
                         Iniciar Sesion
                       </button>
                       <hr />
-                      <button
-                        type="button"
-                        onClick={loginWithGoogle}
-                        className="btn btn-google btn-user btn-block"
-                      >
-                        <i className="fab fa-google fa-fw" /> Iniciar con Google
-                      </button>
-                      <button
-                        type="button"
-                        onClick={googleTest}
-                        className="btn btn-facebook btn-user btn-block"
-                      >
-                        <i className="fab fa-facebook-f fa-fw" /> Iniciar con Facebook
-                      </button>
                     </form>
                     <hr />
                     <div className="text-center">

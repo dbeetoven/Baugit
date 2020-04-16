@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const urlBase = 'https://baugitapi.herokuapp.com/api/v1';
-const urlBase = 'http://localhost:8626/api/v1';
+const urlBase = 'http://baugitapi.herokuapp.com/api/v1';
+// const urlBase = 'http://localhost:8626/api/v1';
 /**
  * @param {string}  url url a la cual consultar
  * esta funcion detecta si es una nueva url base (comienza con http:// o https://).
