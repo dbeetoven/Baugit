@@ -1,5 +1,4 @@
 import React from 'react';
-import { useUser } from 'reactfire';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ user, logout }) => (

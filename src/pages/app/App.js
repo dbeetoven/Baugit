@@ -5,7 +5,7 @@ import './App.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
-import { AuthContext, defaultValue } from 'api/provider/AuthProvider';
+import { AuthContext, defaultValue } from 'provider/AuthProvider';
 
 registerLocale('es', es);
 setDefaultLocale('es');

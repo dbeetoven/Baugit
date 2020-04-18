@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { SearchBar } from 'components/SearchBar';
 import { DashboardList } from 'components/DashboardList';
+
 export const Dashboard = () => {
   const searchResults = (seachFormValues) => {
-    console.log({ seachFormValues });
   };
   return (
     <div className="ftco-search">

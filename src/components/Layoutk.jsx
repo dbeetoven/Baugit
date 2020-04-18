@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Navbar from './NavBar';
 import Sidebar from './Sidebar';
 
-export const Layout = ({ children, user, logout }) => (
+export const Layoutk = ({ children, user, logout }) => (
   <div id="wrapper">
     <Sidebar />
     <div id="content-wrapper" className="d-flex flex-column">
@@ -18,6 +18,6 @@ export const Layout = ({ children, user, logout }) => (
   </div>
 );
 
-Layout.propTypes = {
+Layoutk.propTypes = {
   children: PropTypes.any.isRequired,
 };

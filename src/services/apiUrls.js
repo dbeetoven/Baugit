@@ -9,4 +9,4 @@ const API_URL = {
   TOKEN_KEY: '_TOKEN_BAUGIT',
   USER: '_USER_BAUGIT',
 };
-export default API_URL;
+export { API_URL };

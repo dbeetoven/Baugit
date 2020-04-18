@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import httpClient from 'api/axios-client';
-import API_URL from 'api/api';
+import httpClient from 'services/fetch-client';
+import { API_URL } from 'services/apiUrls';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import { addDays } from 'date-fns';
@@ -26,22 +26,19 @@ export const JobPost = (props) => {
       .catch((err) => console.error(err));
   }, []);
 
-  const _formatLocation = (locations) => {
-    return locations.map((p) => {
-      p['label'] = p['nombre'];
-      p['value'] = Number(p['id']);
-      
-      return p;
-    });
-  };
-  
+  const _formatLocation = (locations) => locations.map((p) => {
+    p.label = p.nombre;
+    p.value = Number(p.id);
+
+    return p;
+  });
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
   };
   return (
     <form className="user" onSubmit={handleSubmit} noValidate>
       <div className="row">
-
         <div className="form-group col-lg-4 col-md-8 col-xs-12">
           <input
             type="text"
@@ -86,15 +83,15 @@ export const JobPost = (props) => {
         </div>
         <div className="form-group col-lg-3 col-md-6 col-xs-12">
           <Select
-          placeholder="Categoria"
+            placeholder="Categoria"
             options={jobCategories}
             value={jobCaterory}
             onChange={(e) => setJobCategory(e.target.value)}
           />
         </div>
         <div className="form-group col-lg-3 col-md-6 col-xs-12">
-        <Select
-          placeholder="Tipo de contatacion"
+          <Select
+            placeholder="Tipo de contatacion"
             options={jobCategories}
             value={jobType}
             onChange={(e) => setJobCategory(e.target.value)}
@@ -110,7 +107,7 @@ export const JobPost = (props) => {
             placeholder="Seleccione una fecha."
           />
         </div>
- 
+
         <div className="form-group col-lg-9 col-md-6 col-xs-12">
           <input
             type="text"

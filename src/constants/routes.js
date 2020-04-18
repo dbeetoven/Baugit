@@ -7,7 +7,7 @@ const Routes = {
   CONTACT: '/contacto',
   FORGOT_PASSWORD: '/olvido-password',
   JOBS_HIRING: '/busquedas',
-  JOBS_POSTS:'/publicacion-de-trabajo',
+  JOBS_POSTS: '/publicacion-de-trabajo',
   CHALLENGE: '/challenge',
   INTERVIEW: '/entrevista',
 };

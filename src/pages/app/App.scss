@@ -1,5 +1,18 @@
-$backgroudColor:#f8f8f8;
-.App{
+@import '~antd/dist/antd.css';
+$backgroudColor: #f8f8f8;
+.App {
   height: 100%;
 }
+.logo {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+  align-items: flex-start;
+  align-items: center;
+  align-content: space-between;
+}
 
+.menu-item-logo {
+  flex-grow: 4
+}
