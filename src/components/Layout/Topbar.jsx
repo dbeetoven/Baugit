@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import {
-  Menu, Layout, Avatar, Popover, Badge, List
+  Drawer, Button, Menu, Layout, Avatar, Popover, Badge, List
 } from 'antd';
+import { Link } from 'react-router-dom';
 import {
   LogoutOutlined,
   UserOutlined,
@@ -12,73 +13,52 @@ import {
 } from '@ant-design/icons';
 
 import { MenuItem } from 'components/menus/MenuItem';
+import RightMenu from './RightMenu';
+import LeftMenu from './LeftMenu';
 
 const { SubMenu } = Menu;
 
 const Topbar = () => {
-  const handleClick = (e) => {
-    console.log('click ', e);
+  const [state, setState] = useState({ current: 'mail', visible: false });
+
+  const showDrawer = () => {
+    setState({
+      visible: true,
+    });
   };
+  const onClose = () => {
+    setState({
+      visible: false,
+    });
+  };
+
   return (
-    <div>
-      <Menu
-        theme="dark"
-        key="user"
-        mode="horizontal"
-        onClick={handleClick}
-        className="logo"
-        defaultSelectedKeys={['1']}
-      >
-        <Menu.Item key="0" className="menu-item-logo">
-          {' '}
-          <img
-            className="ant-menu-item"
-            src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
-            alt="Baugit"
-          />
-        </Menu.Item>
-        <Menu.Item key="1">
-          <HomeOutlined />
-          Home
-        </Menu.Item>
-
-        <Menu.Item key="3">
-          <UsergroupAddOutlined />
-          Comunidad
-        </Menu.Item>
-        <Menu.Item key="2">
-          <CommentOutlined />
-          Foro
-        </Menu.Item>
-        {/* <Menu.Item key="4">
-          <LoginOutlined />
-          Login
-        </Menu.Item> */}
-        <SubMenu
-          key="userLogged"
-          title={(
-            <>
-              <span style={{ color: '#999', marginRight: 4 }}>Bienvenido,</span>
-              <span>dbeetoven</span>
-              <Avatar
-                style={{ marginLeft: 8 }}
-                src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
-              />
-            </>
-            )}
+    <nav className="menuBar">
+      <div className="logo">
+        <Link to="/">logo</Link>
+      </div>
+      <div className="menuCon">
+        <div className="leftMenu">
+          <LeftMenu />
+        </div>
+        <div className="rightMenu">
+          <RightMenu />
+        </div>
+        <Button className="barsMenu" type="primary" onClick={showDrawer}>
+          <span className="barsBtn" />
+        </Button>
+        <Drawer
+          title={<span>Baugit</span>}
+          placement="right"
+          closable={false}
+          onClose={onClose}
+          visible={state.visible}
         >
-          <Menu.Item key="Profile">
-            <UserOutlined />
-            Perfil
-          </Menu.Item>
-          <Menu.Item key="SignOut">
-            <LogoutOutlined />
-            Cerrar Sesión
-          </Menu.Item>
-        </SubMenu>
-
-      </Menu>
-    </div>
+          <LeftMenu />
+          <RightMenu />
+        </Drawer>
+      </div>
+    </nav>
   );
 };
 

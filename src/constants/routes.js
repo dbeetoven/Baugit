@@ -1,4 +1,4 @@
-const Routes = {
+const ROUTES = {
   HOME: '/',
   LOGIN: '/login',
   SIGNUP: '/register',
@@ -10,6 +10,8 @@ const Routes = {
   JOBS_POSTS: '/publicacion-de-trabajo',
   CHALLENGE: '/challenge',
   INTERVIEW: '/entrevista',
+  COMUNITY: '/comunidad',
+  FORO: '/foro'
 };
 
-export default Routes;
+export default ROUTES;
