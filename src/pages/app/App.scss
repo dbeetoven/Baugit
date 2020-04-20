@@ -17,7 +17,7 @@ $backgroudColor: #f8f8f8;
 .logo a {
   display: inline-block;
   font-size: 20px;
-  padding: 19px 20px;
+  // padding: 19px 20px;
   text-transform: capitalize;
 }
 .menuCon {
@@ -28,11 +28,11 @@ $backgroudColor: #f8f8f8;
   padding: 0px 5px;
 }
 .menuCon .ant-menu-submenu-title {
-  padding: 10px 20px;
+  padding: 5px 20px;
 }
 .menuCon .ant-menu-item a,
 .menuCon .ant-menu-submenu-title a {
-  padding: 10px 15px;
+  padding: 5px 15px;
 }
 .menuCon .ant-menu-horizontal {
   border-bottom: none;
@@ -45,7 +45,7 @@ $backgroudColor: #f8f8f8;
 }
 .barsMenu {
   float: right;
-  height: 32px;
+  // height: 32px;
   padding: 6px;
   margin-top: 8px;
   display: none;
@@ -115,30 +115,18 @@ $backgroudColor: #f8f8f8;
 .ant-layout-footer {
   color: rgba(0, 0, 0, 0.65);
   background: #f5f5f5;
+  padding:0 ;
 }
 
 .ant-layout-footer {
   line-height: 1.5;
 }
-.ant-layout-sider {
-  color: rgba(0, 0, 0, 0.65);
-  color: #fff;
-  line-height: 120px;
-}
+
 
 .ant-layout-content {
-  top: 80px;
   background: #f5f5f5;
   color: rgba(0, 0, 0, 0.65);
-  min-height: 120px;
-  line-height: 120px;
-}
-
-> .code-box-demo > div > .ant-layout {
-  margin-bottom: 48px;
-}
-> .code-box-demo > div > .ant-layout:last-child {
-  margin: 0;
+  // padding-top: 5%;
 }
 
 .layout {
@@ -147,3 +135,11 @@ $backgroudColor: #f8f8f8;
   padding: 0;
   margin: 0;
 }
+
+.site-card-wrapper {
+  background: #ececec;
+  padding: 30px;
+}
+  [data-theme="dark"] .site-card-wrapper {
+    background: #303030;
+  }

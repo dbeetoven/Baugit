@@ -1,37 +1,29 @@
 import React from 'react';
 import { DashBoard } from 'components/Dashboard';
 import { Row, Col, Divider } from 'antd';
+import { PostList } from 'components/Lists/PostLists';
 
 const HomePage = () => (
   <Row
-    gutter={{
-      xs: 8,
-      sm: 16,
-      md: 24,
-      lg: 32,
-    }}
+    gutter={{ xs: 8, sm: 16, md: 24 }}
   >
     <Col
-      span={{
-        xs: 6,
-        sm: 10,
-        md: 16,
-        lg: 24,
-      }}
+      span={18}
+      xs={8}
+      sm={12}
+      md={18}
     >
       <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
         Ultimos Post
       </Divider>
-      <DashBoard />
+      <PostList />
     </Col>
     <Col
-      span={{
-        xs: 2,
-        sm: 6,
-        md: 8,
-        lg: 12,
-      }}
+      span={6}
     >
+      <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
+        Recientes
+      </Divider>
       <DashBoard />
     </Col>
   </Row>

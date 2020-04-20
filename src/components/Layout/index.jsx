@@ -5,17 +5,25 @@ import { Topbar } from './Topbar';
 const { Header, Footer, Content } = Layout;
 
 const LayoutPage = ({ children, user }) => (
-  <Layout style={{ height: '100vh', minHeight: '100vh' }}>
-    <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+  <Layout className="layout">
+    <Header style={{
+      position: 'fixed', top: '0', zIndex: 1, width: '100%'
+    }}
+    >
       <Topbar user={user} />
     </Header>
-    <Content>
-      <div className="container pt-5 mt-5">
+    <Content style={{ padding: '0 50px', marginTop: 64, overflowY: 'auto' }}>
+      <div style={{ height: 'calc(100vh - 64px)' }}>
         {children}
       </div>
     </Content>
-    <Footer>Footer</Footer>
+    <Footer style={{
+      position: 'sticky', bottom: '0', textAlign: 'center', backgroundColor: '#f3f3f5'
+    }}
+    >Baugit Design ©2020 Created by @dbeetoven
+    </Footer>
   </Layout>
 );
 
 export { LayoutPage };
+// style={{ padding: '0 50px', marginTop: 64 }}

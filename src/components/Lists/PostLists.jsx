@@ -1,12 +1,20 @@
 import React from 'react';
-import {
-  List, Avatar, Button, Skeleton
-} from 'antd';
+import { Col, Row } from 'antd';
 import { PostCard } from '../Cards/PostCard';
 
 const PostList = () => (
-  <List className="demo-loadmore-list" itemLayout="horizontal">
-    <PostCard />
-  </List>
+  <div className="site-card-wrapper">
+    <Row gutter={24}>
+      <Col span={8}>
+        <PostCard key={1} />
+      </Col>
+      <Col span={8}>
+        <PostCard key={2} />
+      </Col>
+      <Col span={8}>
+        <PostCard key={3} />
+      </Col>
+    </Row>
+  </div>
 );
 export { PostList };
