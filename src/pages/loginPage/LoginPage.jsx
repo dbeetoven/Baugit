@@ -1,25 +1,20 @@
-import { AuthContext } from 'provider/AuthProvider';
+import { UserContext } from 'provider/UserProvider';
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const LoginPage = () => {
-  const authContext = useContext(AuthContext);
-  const history = useHistory();
+  const { user, handleLogin, handleLogout } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isEnabled = email.length > 0 && email.includes('@') && password.length >= 6;
+  const history = useHistory();
+
+  handleLogout(); // OnInit Logout
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    authContext
-      .login({ email, password })
-      .then((res) => {
-        authContext.setSessionData(res.token, res.user);
-        history.push('/');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    handleLogin({ email, password });
+    if (user) history.push('/');
   };
 
   return (

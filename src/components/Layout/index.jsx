@@ -12,7 +12,7 @@ const LayoutPage = ({ children, user }) => (
     >
       <Topbar user={user} />
     </Header>
-    <Content style={{ padding: '0 50px', marginTop: 64, overflowY: 'auto' }}>
+    <Content style={{ padding: '0 50px' }}>
       <div style={{ height: 'calc(100vh - 64px)' }}>
         {children}
       </div>
@@ -20,7 +20,7 @@ const LayoutPage = ({ children, user }) => (
     <Footer style={{
       position: 'sticky', bottom: '0', textAlign: 'center', backgroundColor: '#f3f3f5'
     }}
-    >Baugit Design ©2020 Created by @dbeetoven
+    >Baugit Design ©{new Date().getFullYear()} Created by @dbeetoven
     </Footer>
   </Layout>
 );

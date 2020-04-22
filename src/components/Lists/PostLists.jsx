@@ -14,6 +14,9 @@ const PostList = () => (
       <Col span={8}>
         <PostCard key={3} />
       </Col>
+      <Col span={8}>
+        <PostCard key={3} />
+      </Col>
     </Row>
   </div>
 );
