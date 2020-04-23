@@ -6,7 +6,7 @@ import HomePage from 'pages/HomePage';
 import LoginPage from 'pages/loginPage/LoginPage';
 import { Posts } from 'pages/posts/posts';
 import { Profile } from 'pages/profile/Profile';
-import SignUpPage from 'pages/signupPage/SignUpPage';
+import { SignUpPage } from 'pages/signupPage/SignUpPage';
 import { UserProvider } from 'provider/UserProvider';
 import { Route, Switch } from 'react-router-dom';
 

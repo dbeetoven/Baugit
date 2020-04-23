@@ -1,5 +1,5 @@
 const API_URL = {
-  BASE_URL: 'https://baugitapi.herokuapp.com',
+  BASE_URL: process.env.REACT_APP_BASE_URL,
   PROVINCES: 'https://apis.datos.gob.ar/georef/api/provincias?campos=id,nombre',
   LOGIN: 'auth/login',
   SIGNUP: 'auth/signup',
