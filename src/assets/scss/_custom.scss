@@ -1,0 +1,23 @@
+.ant-layout-content {
+  padding: 1em;
+  border: solid 1px $gray-200;
+  overflow-y: auto;
+  height: 100vh;
+  box-shadow: 0 0 30px $bg-color;
+}
+
+tr:last-child td {
+  padding-bottom: 0;
+}
+.ant-statistic-content {
+  font-size: 20px;
+  line-height: 28px;
+}
+.content {
+  display: flex;
+}
+@media (max-width: 576px) {
+  .content {
+    display: block;
+  }
+}
