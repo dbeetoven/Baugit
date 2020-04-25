@@ -10,7 +10,6 @@ import {
   Descriptions,
 } from 'antd';
 import React from 'react';
-import CountUp from 'react-countup';
 import avatarProf from '../assets/images/proyect.png';
 import avatarUser from '../assets/images/prof.png';
 
@@ -62,6 +61,7 @@ const Content = ({ children, extra }) => (
 export const ContentHeader = () => (
   <div>
     <PageHeader
+      backIcon="false"
       className="site-page-header-responsive"
       title={(
         <Title level={3} underline="true" type="secondary">

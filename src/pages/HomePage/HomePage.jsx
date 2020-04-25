@@ -6,10 +6,16 @@ import {
 import { PostList } from 'components/Lists/PostLists';
 import { SearchBar } from 'components/SearchBar';
 import { ContentHeader } from 'components/ContentHeader';
+import { Status } from 'components/Status';
 
 const HomePage = () => (
   <Row>
     <ContentHeader />
+    <hr />
+    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+      <Status />
+    </Col>
+    <hr />
     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
       <Card>
         <SearchBar />

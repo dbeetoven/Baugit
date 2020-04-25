@@ -21,3 +21,13 @@ tr:last-child td {
     display: block;
   }
 }
+
+.site-page-header-responsive{
+  border-radius: 5px;
+  border: solid 1px $gray-300;
+  transition: box-shadow .3s;
+}
+
+.site-page-header-responsive:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
