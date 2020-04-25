@@ -1,5 +1,6 @@
 @import '~antd/dist/antd.css';
-$backgroudColor: #f8f8f8;
+$backgroudColor: #F9F9F9;
+// f8f6f2
 .App {
   height: 100%;
 }
@@ -8,7 +9,7 @@ $backgroudColor: #f8f8f8;
   padding: 0 20px;
   border-bottom: solid 1px #e8e8e8;
   overflow: auto;
-  box-shadow: 0 0 30px #f3f1f1;
+  box-shadow: 0 0 30px #f8f6f2;
 }
 .logo {
   width: 150px;

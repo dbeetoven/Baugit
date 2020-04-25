@@ -8,7 +8,6 @@ import { UserContext } from 'provider/UserProvider';
 import React, { useContext, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -45,8 +44,15 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="login">
-      <Form {...formItemLayout} form={form} name="register" className="signup-form" onFinish={onFinish} scrollToFirstError>
+    <div className="signup">
+      <Form
+        {...formItemLayout}
+        form={form}
+        className="signup-form"
+        name="register"
+        onFinish={onFinish}
+        scrollToFirstError
+      >
         <FormItem
           label="Usuario"
           name="username"
@@ -128,7 +134,9 @@ const SignUpPage = () => {
           valuePropName="checked"
           rules={[
             {
-              validator: (_, value) => (value ? Promise.resolve() : Promise.reject('Debes aceptar los Terminanos & Condiciones')),
+              validator: (_, value) => (value ?
+                Promise.resolve() :
+                Promise.reject('Debes aceptar los Terminanos & Condiciones')),
             },
           ]}
           {...tailFormItemLayout}
