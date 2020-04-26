@@ -27,9 +27,15 @@ $green: #1cc88a !default;
 $teal: #20c9a6 !default;
 $cyan: #36b9cc !default;
 
+
 // Custom Colors
 $brand-google: #ea4335;
 $brand-facebook: #3b5998;
+$bg-color:#f8f6f2;
+$bg-color-2: #F9F9F9 ;
+$backgroudColor: #f5f5f5 ;
+
+
 
 // Set Contrast Threshold
 $yiq-contrasted-threshold: 195 !default;
@@ -52,13 +58,7 @@ $box-shadow: 0 0.15rem 1.75rem 0 rgba($gray-900, .15) !default;
 $border-radius: 0.35rem !default;
 $border-color: darken($gray-200, 2%);
 
-// Spacing Variables
-// Change below variable if the height of the navbar changes
-$topbar-base-height: 4.375rem;
-// Change below variable to change the width of the sidenav
-$sidebar-base-width: 14rem;
-// Change below variable to change the width of the sidenav when collapsed
-$sidebar-collapsed-width: 6.5rem;
+
 
 // Card
 $card-cap-bg: $gray-100;

@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://dbeetoven.github.io/baugit",
+  "author": "(https://dbeetoven.github.io/dbeetoven)",
   "dependencies": {
+    "@ant-design/icons": "^4.0.6",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@testing-library/jest-dom": "^5.3.0",
     "@testing-library/react": "^10.0.1",
     "@testing-library/user-event": "^10.0.1",
-    "axios": "^0.19.2",
+    "antd": "^4.1.3",
     "bootstrap": "^4.4.1",
-    "bulma": "^0.8.1",
-    "firebase": "^7.13.1",
+    "date-fns": "^2.12.0",
+    "evergreen-ui": "^4.26.1",
+    "fetch-intercept": "^2.3.1",
+    "formik": "^2.1.4",
     "jquery": "^3.4.1",
     "lint-staged": "^10.0.9",
     "node-sass": "^4.13.1",
@@ -19,17 +23,18 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
+    "react-countup": "^4.3.3",
     "react-datepicker": "^2.14.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-select": "^3.1.0",
-    "react-swipeable-views": "^0.13.9",
-    "reactfire": "^2.0.0-alpha.3"
+    "react-swipeable-views": "^0.13.9"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-prod": "brunch build -p",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "pre-commit": "npm run lint",
@@ -80,5 +85,12 @@
     "husky": "^4.2.3",
     "prettier": "^2.0.4",
     "terser-brunch": "^4.0.0"
-  }
+  },
+  "keywords": [
+    "react",
+    "node",
+    "react-dom",
+    "scss",
+    "lint"
+  ]
 }

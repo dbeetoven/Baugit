@@ -55,10 +55,12 @@
     "no-shadow": "off",
     "react/forbid-prop-types": "off",
     "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/href-no-hash": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/state-in-constructor": "off",
     "import/prefer-default-export": "off",
     "no-unused-vars": "warn",
+    "valid-jsdoc": "warn",
     "react/button-has-type": [
       "error",
       {

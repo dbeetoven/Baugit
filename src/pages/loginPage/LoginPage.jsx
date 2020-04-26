@@ -1,119 +1,85 @@
-import 'firebase/auth';
-import React, { useState } from 'react';
-import { useFirebaseApp } from 'reactfire';
-import httpService from 'api/axios-client';
-import api from 'api/api'
+/* eslint-disable no-return-assign */
+import React, { useContext, useState } from 'react';
+import { LockOutlined, MailOutlined } from '@ant-design/icons';
+import {
+  Button, Checkbox, Form, Input
+} from 'antd';
+import { VALIDATION_MESSAGE } from 'constants/constant';
+import ROUTES from 'constants/routes';
+import { useLocalStorage } from 'provider/useLocalStorage';
+import { UserContext } from 'provider/UserProvider';
+import { AlertMessage } from 'components/AlertMessage';
+import { Link, useHistory } from 'react-router-dom';
+import './loginPage.scss';
+
+const FormItem = Form.Item;
 
 const LoginPage = () => {
-  const firebase = useFirebaseApp();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const isEnabled = email.length > 0 && email.includes('@') && password.length >= 6;
+  const [form] = Form.useForm();
+  const { user, handleLogin, handleLogout } = useContext(UserContext);
+  const [remenberme, setRemenberme] = useLocalStorage('_rememberMe', false);
+  const [emailRemenber, setEmailRemenber] = useLocalStorage('_emailRemenber', '');
+  const [isAlert, showAlert] = useState(false);
+  const history = useHistory();
 
-  const handleSubmit = async (ev) => {
-    ev.preventDefault();
-    const userLoggedIn = await firebase.auth().signInWithEmailAndPassword(email, password);
-    console.log({ userLoggedIn });
+  const onFinish = (values) => {
+    if (remenberme) setEmailRemenber(values.email);
+    handleLogin(values);
+    if (user) history.push('/');
+    else showAlert(true);
   };
 
-  const loginWithGoogle = async (ev) => {
-    ev.preventDefault();
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
-
-    const userLoggedIn = await firebase.auth().signInWithPopup(provider);
-    console.log({ userLoggedIn });
-  };
-
-  const googleTest=(ev)=>{
-    ev.preventDefault();
-    httpService.get(api.LOGIN_WITH_GOOGLE).then((res)=>{
-      console.log(res);
-      
-    }
-    )
-  }
+  handleLogout(); // OnInit Logout
 
   return (
-    <div>
-      <div className="row justify-content-center">
-        <div className="col-xl-10 col-lg-12 col-md-9">
-          <div className="card o-hidden border-0 shadow-lg my-5">
-            <div className="card-body p-0">
-              <div className="row">
-                <div className="col-lg-6 d-none d-lg-block bg-login-image" />
-                <div className="col-lg-6">
-                  <div className="p-5">
-                    <div className="text-center">
-                      <h1 className="h4 text-gray-900 mb-4">Bienvenido!</h1>
-                    </div>
-                    <form className="user" onSubmit={handleSubmit} noValidate>
-                      <div className="form-group">
-                        <input
-                          type="email"
-                          className="form-control form-control-user"
-                          id="exampleInputEmail"
-                          aria-describedby="emailHelp"
-                          placeholder="Correo Electronico"
-                          onChange={(e) => setEmail(e.target.value)}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          type="password"
-                          className="form-control form-control-user"
-                          id="exampleInputPassword"
-                          placeholder="Contraseña"
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <div className="custom-control custom-checkbox small">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id="customCheck"
-                          />
-                        </div>
-                      </div>
-                      <button
-                        type="submit"
-                        disabled={!isEnabled}
-                        className="btn btn-primary btn-user btn-block"
-                      >
-                        Iniciar Sesion
-                      </button>
-                      <hr />
-                      <button
-                        type="button"
-                        onClick={loginWithGoogle}
-                        className="btn btn-google btn-user btn-block"
-                      >
-                        <i className="fab fa-google fa-fw" /> Iniciar con Google
-                      </button>
-                      <button type="button" onClick={googleTest} className="btn btn-facebook btn-user btn-block">
-                        <i className="fab fa-facebook-f fa-fw" /> Iniciar con Facebook
-                      </button>
-                    </form>
-                    <hr />
-                    <div className="text-center">
-                      <a className="small" href="forgot-password.html">
-                        ¿Olvidaste tu contraseña?
-                      </a>
-                    </div>
-                    <div className="text-center">
-                      <a className="small" href="register.html">
-                        ¿No tienes un cuenta? Registrate gratis
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="login">
+      <Form
+        form={form}
+        onFinish={onFinish}
+        className="login-form"
+        validateMessages={VALIDATION_MESSAGE}
+      >
+        <FormItem label="" name="email" rules={[{ required: true }, { type: 'email' }]}>
+          <Input
+            prefix={<MailOutlined style={{ fontSize: 13 }} />}
+            type="email"
+            value={emailRemenber}
+            placeholder="Correo Electronico"
+          />
+        </FormItem>
+        <FormItem label="" name="password" rules={[{ required: true }]}>
+          <Input.Password
+            prefix={<LockOutlined style={{ fontSize: 13 }} />}
+            type="password"
+            placeholder="Contraseña"
+          />
+        </FormItem>
+        <FormItem shouldUpdate>
+          <Checkbox
+            checked={remenberme}
+            onChange={() => setRemenberme(remenberme ? !remenberme : !remenberme)}
+          >
+            Recordame
+          </Checkbox>
+          <Link className="login-form-forgot" to={ROUTES.FORGOT_PASSWORD}>
+            ¿Olvidaste tu contraseña?
+          </Link>
+          <Button type="primary" htmlType="submit" className="login-form-button">
+            Iniciar Sesión
+          </Button>
+          ¡No tengo cuenta?{' '}
+          <Link className="login-form-forgot" to={ROUTES.SIGNUP}>
+            Crear Cuenta!
+          </Link>
+        </FormItem>
+        {isAlert ? (
+          <AlertMessage
+            message="Usuario o Contraseña incorrecto."
+            type="error"
+            handleClose={() => showAlert(false)}
+          />
+        ) : null}
+      </Form>
     </div>
   );
 };

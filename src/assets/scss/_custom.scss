@@ -1,0 +1,33 @@
+.ant-layout-content {
+  padding: 1em;
+  border: solid 1px $gray-200;
+  overflow-y: auto;
+  height: 100vh;
+  box-shadow: 0 0 30px $bg-color;
+}
+
+tr:last-child td {
+  padding-bottom: 0;
+}
+.ant-statistic-content {
+  font-size: 20px;
+  line-height: 28px;
+}
+.content {
+  display: flex;
+}
+@media (max-width: 576px) {
+  .content {
+    display: block;
+  }
+}
+
+.site-page-header-responsive{
+  border-radius: 5px;
+  border: solid 1px $gray-300;
+  transition: box-shadow .3s;
+}
+
+.site-page-header-responsive:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}

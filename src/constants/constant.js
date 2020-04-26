@@ -1,39 +1,17 @@
-import Routes from './routes';
+const DEFAULT_CONSTANT = {
+  AVATAR_SRC: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+};
 
-const sidebarItems = [
-  {
-    title: 'Jobs',
-    Subtitle: 'Seccion Laboral',
-    control: 'jobcontrolCollapse',
-    childrens: [
-      {
-        title: 'Busquedas',
-        route: Routes.JOBS_HIRING,
-      },
-      {
-        title: 'Desafios',
-        route: Routes.CHALLENGE,
-      },
-      {
-        title: 'Entrevistas',
-        route: Routes.INTERVIEW,
-      },
-    ],
+const VALIDATION_MESSAGE = {
+  required: 'Este campo es requerido!',
+  types: {
+    email: 'Tu correo electronico es incorrecto',
+    number: 'Numero invalido.',
+    password: 'Tu contreseña  es incorrecto debe tener entre 6 y 25 caracteres.'
   },
-  {
-    title: 'Foros',
-    Subtitle: 'Foros',
-    control: 'forosControlCollaspe',
-    childrens: [
-      {
-        title: 'Foros',
-        route: Routes.JOBS_HIRING,
-      },
-      {
-        title: 'Desafios',
-        route: Routes.CHALLENGE,
-      },
-    ],
+  number: {
+    range: 'Debe tener entre 6 y 25 caracteres.',
   },
-];
-export default sidebarItems;
+};
+
+export { DEFAULT_CONSTANT, VALIDATION_MESSAGE };
