@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://dbeetoven.github.io/baugit",
   "author": "(https://dbeetoven.github.io/dbeetoven)",
+  "proxy": "https://baugitapi.herokuapp.com",
   "dependencies": {
     "@ant-design/icons": "^4.0.6",
     "@fortawesome/fontawesome-free": "^5.13.0",
