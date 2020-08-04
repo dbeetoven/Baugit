@@ -3,6 +3,7 @@ import {
   Card, Col, Row, Avatar, Typography
 } from 'antd';
 import CountUp from 'react-countup';
+import { CardMeta } from 'components/Cards/CardMeta';
 
 const { Title } = Typography;
 const { Meta } = Card;
@@ -13,7 +14,11 @@ export const Status = () => (
         <Meta
           style={{ textAlign: 'center' }}
           title={<Title level={4}>Ofertas Nuevas</Title>}
-          description={<Title level={3}><CountUp end={834} duration={4} /></Title>}
+          description={(
+            <Title level={3}>
+              <CountUp end={834} duration={4} />
+            </Title>
+          )}
         />
       </Card>
     </Col>
@@ -22,7 +27,11 @@ export const Status = () => (
         <Meta
           style={{ textAlign: 'center' }}
           title={<Title level={4}>Proyectos Nuevos</Title>}
-          description={<Title level={3}><CountUp end={142} duration={4} /></Title>}
+          description={(
+            <Title level={3}>
+              <CountUp end={142} duration={4} />
+            </Title>
+          )}
         />
       </Card>
     </Col>
@@ -31,7 +40,11 @@ export const Status = () => (
         <Meta
           style={{ textAlign: 'center' }}
           title={<Title level={4}>Profesionales Activos</Title>}
-          description={<Title level={3}><CountUp end={1893} duration={4} /></Title>}
+          description={(
+            <Title level={3}>
+              <CountUp end={1893} duration={4} />
+            </Title>
+          )}
         />
       </Card>
     </Col>
@@ -40,7 +53,11 @@ export const Status = () => (
         <Meta
           style={{ textAlign: 'center' }}
           title={<Title level={4}>Profesionales Disponibles</Title>}
-          description={<Title level={3}><CountUp end={3456} duration={4} /></Title>}
+          description={(
+            <Title level={3}>
+              <CountUp end={3456} duration={4} />
+            </Title>
+          )}
         />
       </Card>
     </Col>

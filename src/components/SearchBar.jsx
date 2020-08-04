@@ -7,7 +7,6 @@ const { Search, Group, Option } = Input;
 export const SearchBar = ({ handleSearch, size = 'large' }) => (
   <Group compact>
     <Select defaultValue="Profesional" style={{ width: '20%' }}>
-      <Option value="profesional">Profesional</Option>
       <Option value="Proyectos">Proyectos</Option>
       <Option value="Proyectos">Except</Option>
       <Option value="Proyectos">Except</Option>
