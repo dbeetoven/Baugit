@@ -16,7 +16,7 @@
     "evergreen-ui": "^4.26.1",
     "fetch-intercept": "^2.3.1",
     "formik": "^2.1.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lint-staged": "^10.0.9",
     "node-sass": "^4.13.1",
     "popper.js": "^1.16.1",
