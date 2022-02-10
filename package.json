@@ -18,7 +18,7 @@
     "formik": "^2.1.4",
     "jquery": "^3.5.0",
     "lint-staged": "^10.0.9",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
